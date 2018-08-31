@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { loginInfo } from './constants';
 
 class LoginView extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      username: '',
-      password: '',
+    if (loginInfo.email) {
+      this.state = {
+        email: loginInfo.email,
+        password: loginInfo.password,
+      }
+    }
+    else {
+      this.state = {
+        email: '',
+        password: '',
+      } 
     }
   }
 
@@ -22,7 +31,10 @@ class LoginView extends Component {
 
   handleLogin = (event) => {
     event.preventDefault();
-    console.log(this.state);
+    this.props.dispatch({
+      type: 'LOGIN_USER',
+      payload: this.state,
+    });
   }
 
   render = () => {
@@ -30,12 +42,12 @@ class LoginView extends Component {
       <div>
         <h1>Please Log In</h1>
         <div>
-          <label>Username: </label>
-          <input onChange={this.handleChange} name="username"></input>
+          <label>Email: </label>
+          <input onChange={this.handleChange} name="email" value={this.state.email}></input>
         </div>
         <div>
           <label>Password: </label>
-          <input onChange={this.handleChange} name="password" type="password"></input>
+          <input onChange={this.handleChange} name="password" type="password" value={this.state.password}></input>
         </div>
         <div>
           <button onClick={this.handleLogin}>Submit</button>
@@ -45,4 +57,4 @@ class LoginView extends Component {
   };
 }
 
-export default (LoginView);
+export default connect()(LoginView);
