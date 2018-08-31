@@ -10,8 +10,8 @@ function* loginUser(action) {
     client_id: loginInfo.client_id,
     grant_type: loginInfo.grant_type,
   };
-  console.log(payload);
   let result = yield call(axios.post, loginInfo.endpoint, payload);
+  yield put({type: 'USER_TOKEN', payload: result.data});
   yield put({type: 'LOGIN_END'});
 } 
 

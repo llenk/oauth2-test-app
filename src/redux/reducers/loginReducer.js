@@ -9,8 +9,18 @@ const isLoading = (state = false, action) => {
     default:
       return state;
   }
-}
+};
+
+const userToken = (state = {}, action) => {
+  switch (action.type) {
+    case 'USER_TOKEN':
+      return action.payload;
+    default: 
+      return state;
+  }
+};
 
 export default combineReducers({
   isLoading,
+  userToken,
 });
