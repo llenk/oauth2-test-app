@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginInfo } from './constants';
 
+const mapStateToProps = state => ({
+  login: state.login,
+});
+
 class LoginView extends Component {
   constructor(props) {
     super(props);
@@ -37,6 +41,12 @@ class LoginView extends Component {
     });
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.login.userToken.user_id) {
+      this.props.history.push('/');
+    }
+  }
+
   render = () => {
     return (
       <div>
@@ -57,4 +67,4 @@ class LoginView extends Component {
   };
 }
 
-export default connect()(LoginView);
+export default connect(mapStateToProps)(LoginView);
