@@ -14,6 +14,7 @@ class WallView extends Component {
     if (!this.props.login.isLoading && !this.props.login.userToken.user_id) {
       this.props.history.push('login');
     }
+    this.props.dispatch({type: 'GET_WALL', payload: this.props.login.userToken.access_token});
   }
 
   render = () => {
