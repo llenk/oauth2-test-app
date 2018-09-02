@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 const wallPosts = (state = [], action) => {
   switch (action.type) {
     case 'SET_WALL':
-      return [...state, action.payload];
+      return action.payload;
     default: 
       return state;
   }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import WallInput from './WallInput';
+import WallPosts from './WallPosts';
 
 const mapStateToProps = state => ({
   login: state.login,
@@ -22,6 +23,7 @@ class WallView extends Component {
     return (
       <div>
         <WallInput />
+        <WallPosts />
       </div>
     );
   };
