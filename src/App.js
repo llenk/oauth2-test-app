@@ -8,6 +8,8 @@ import {
 import LoginView from './components/LoginView';
 import WallView from './components/WallView';
 
+import './App.css';
+
 class App extends Component {
   render() {
     return (

@@ -25,8 +25,6 @@ function* getWall(action) {
         post.comments = comments.data._embedded.wall_comment;
       }
       posts = [...posts, post];  
-      // asdf
-
     }
     yield put({ type: 'SET_WALL', payload: posts });
   }

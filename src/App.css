@@ -1,0 +1,16 @@
+.post {
+  border: 2px solid  #e9967a;
+  padding: 5px;
+  background:  #fbeee9
+  ;
+  margin: 5px;
+}
+.commentsSection {
+  margin: 5px 15px;
+  border: 1px solid  #eda891;
+}
+
+p {
+  margin: 0;
+	padding: 0;
+}

@@ -14,7 +14,7 @@ class Comments extends Component {
 
   render = () => {
     return (
-      <div>
+      <div className="comment">
         {this.props.comments.map((comment, i) => (
           <p key={i}>{comment.user.name} says: {comment.comment}</p>
         ))}

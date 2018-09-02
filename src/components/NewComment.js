@@ -31,7 +31,7 @@ class NewComment extends Component {
   render = () => {
     return (
       <div>
-        <input onChange={this.handleChange}></input>
+        <input onChange={this.handleChange} placeholder="new comment"></input>
         <button onClick={this.handleClick}>Submit</button>
       </div>
     );
