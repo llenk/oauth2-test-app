@@ -3,15 +3,7 @@ import { connect } from 'react-redux';
 
 import CommentSection from './CommentSection';
 
-const mapStateToProps = state => ({
-  wall: state.wall,
-});
-
 class WallInput extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render = () => {
     return (
       <div className="post">
@@ -22,4 +14,4 @@ class WallInput extends Component {
   };
 }
 
-export default connect(mapStateToProps)(WallInput);
+export default connect()(WallInput);

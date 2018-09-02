@@ -1,17 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import WallPost from './WallPost';
-
-const mapStateToProps = state => ({
-  wall: state.wall,
-});
-
 class Comments extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render = () => {
     return (
       <div className="comment">
@@ -23,4 +13,4 @@ class Comments extends Component {
   };
 }
 
-export default connect(mapStateToProps)(Comments);
+export default connect()(Comments);

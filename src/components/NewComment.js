@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-const mapStateToProps = state => ({
-  wall: state.wall,
-});
-
 class NewComment extends Component {
   constructor(props) {
     super(props);
@@ -26,16 +22,17 @@ class NewComment extends Component {
         id: this.props.id,
       }
     });
+    this.setState({newComment: ''})
   }
 
   render = () => {
     return (
       <div>
-        <input onChange={this.handleChange} placeholder="new comment"></input>
+        <input onChange={this.handleChange} placeholder="new comment" value={this.state.newComment}></input>
         <button onClick={this.handleClick}>Submit</button>
       </div>
     );
   };
 }
 
-export default connect(mapStateToProps)(NewComment);
+export default connect()(NewComment);

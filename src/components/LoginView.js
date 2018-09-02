@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loginInfo } from './constants';
 
 const mapStateToProps = state => ({
   login: state.login,
@@ -9,17 +8,9 @@ const mapStateToProps = state => ({
 class LoginView extends Component {
   constructor(props) {
     super(props);
-    if (loginInfo.email) {
-      this.state = {
-        email: loginInfo.email,
-        password: loginInfo.password,
-      }
-    }
-    else {
-      this.state = {
-        email: '',
-        password: '',
-      } 
+    this.state = {
+      email: '',
+      password: '',
     }
   }
 
