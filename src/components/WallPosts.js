@@ -30,8 +30,8 @@ class WallInput extends Component {
     else {
       content = (
         <div>
-        {wallPosts.map((post) => (
-          <WallPost post={post}/>
+        {wallPosts.map((post, i) => (
+          <WallPost post={post} key={i}/>
         ))}
         </div>
       )

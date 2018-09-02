@@ -9,7 +9,7 @@ const wallPosts = (state = [], action) => {
   }
 }
 
-const postIds = (state = [], action) => {
+const postIds = (state = ['c343c9c0-ae41-11e8-bbe4-06586b502edc'], action) => {
   switch (action.type) {
     case 'NEW_POST_ID':
       return [...state, action.payload];

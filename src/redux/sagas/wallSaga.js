@@ -18,8 +18,13 @@ function* getWall(action) {
   let posts = [];
   for (let id of postIds) {
     let post = yield call(axios.get, 'https://devapi.careerprepped.com/discussion/wall/' + id, config);
-    posts = [...posts, post.data];
-    console.log(posts);
+    post = post.data;
+    if (post.comment_count > 0) {
+      console.log('eyy')
+      let comments = yield call(axios.get, 'https://devapi.careerprepped.com/discussion/wall_comment?wallpost=' + id, config);
+      post.comments = comments.data._embedded.wall_comment;
+    }
+    posts = [...posts, post];
   }
 
   yield put({type: 'SET_WALL', payload: posts});

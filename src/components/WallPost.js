@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import WallPost from './WallPost';
+import CommentSection from './CommentSection';
 
 const mapStateToProps = state => ({
   wall: state.wall,
@@ -14,8 +14,9 @@ class WallInput extends Component {
 
   render = () => {
     return (
-      <div>
-        {JSON.stringify (this.props.post)}
+      <div className="post">
+        <p>{this.props.post.user.name} says: {this.props.post.post}</p>
+        <CommentSection comments={this.props.post.comments} postId={this.props.post.id}/>
       </div>
     );
   };
