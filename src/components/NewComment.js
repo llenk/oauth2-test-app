@@ -8,12 +8,31 @@ const mapStateToProps = state => ({
 class NewComment extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      newComment: '',
+    }
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      newComment: event.target.value,
+    });
+  }
+
+  handleClick = () => {
+    this.props.dispatch({
+      type: 'NEW_COMMENT', payload: {
+        newComment: this.state.newComment,
+        id: this.props.id,
+      }
+    });
   }
 
   render = () => {
     return (
       <div>
-        <input></input>
+        <input onChange={this.handleChange}></input>
+        <button onClick={this.handleClick}>Submit</button>
       </div>
     );
   };
