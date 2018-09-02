@@ -1,4 +1,4 @@
-import { put, takeLatest, call } from 'redux-saga/effects';
+import { put, takeLatest, call, select } from 'redux-saga/effects';
 import axios from 'axios';
 
 const config = {
@@ -8,15 +8,37 @@ const config = {
   // withCredentials: true
 };
 
+const getToken = (state) => state.login.userToken.access_token;
+const getPostIds = (state) => state.wall.postIds;
+
 function* getWall(action) {
-  console.log('eyy')
-  config.headers["Authorization"] = "Bearer " + action.payload;
-  let result = yield call(axios.get, 'https://devapi.careerprepped.com/discussion/wall', config);
-  console.log(result);
+  const token = yield select(getToken);
+  config.headers["Authorization"] = "Bearer " + token;
+  const postIds = yield select(getPostIds);
+  let posts = [];
+  for (let id of postIds) {
+    let post = yield call(axios.get, 'https://devapi.careerprepped.com/discussion/wall/' + id, config);
+    posts = [...posts, post.data];
+    console.log(posts);
+  }
+
+  yield put({type: 'SET_WALL', payload: posts});
+  console.log(posts);
+}
+
+function* newPost(action) {
+  const token = yield select(getToken);
+  config.headers["Authorization"] = "Bearer " + token;
+  let post = {"post": action.payload, "permissions": "1"}
+  let response = yield call(axios.post, 'https://devapi.careerprepped.com/discussion/wall', post, config);
+  console.log(response);
+  yield put({type: 'NEW_POST_ID', payload: response.data.id});
+  yield put({type: 'GET_WALL'});
 }
 
 function* wallSaga() {
   yield takeLatest('GET_WALL', getWall);
+  yield takeLatest('NEW_POST', newPost);
 }
 
 export default wallSaga;
