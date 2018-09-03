@@ -4,7 +4,7 @@ This app was created with React/Redux. It has a login system. Upon logging in, t
 
 ## Setup
 
-In the redux folder, you will need a `constants.js` file. This file will contain the information besides login/password the Oauth2 API requires. It should be formatted as follows, with information added: 
+Clone the repository to your local machine, then navigate to the repository in the terminal. In the redux folder, you will need a `constants.js` file. This file will contain the information besides login/password the Oauth2 API requires. It should be formatted as follows, with information added: 
 
 ```
 export const loginInfo = {
@@ -14,7 +14,7 @@ export const loginInfo = {
 
 ## Starting the app
 
-Clone the repository to your local machine, then navigate to the repository in the terminal. Type `npm start` in the terminal, and navigate to localhost:3000. You will be redirected to the login page, where you can login if you have credentials. 
+ Type `npm start` in the terminal, and navigate to localhost:3000. You will be redirected to the login page, where you can login if you have credentials. 
 
 ## API
 
